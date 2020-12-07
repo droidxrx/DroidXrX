@@ -1,5 +1,5 @@
 function pront()print("New Version Available\nPlease Update Script Link Download On My Telegram\nJoin Telegram: https://t.me/droidtamvanreal")end
-data = true
+data = false
 if data == false then
   local menu = gg.alert('New Version Available\nPlease Update Script Link Download On My Telegram\nJoin Telegram: https://t.me/droidtamvanreal', 'Copy Link Telegram', 'Exit')
   if menu == 0 then
