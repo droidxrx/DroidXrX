@@ -28,4 +28,8 @@
 <br />
 <br />
 
+---
+
+[![DroidXrX's GitHub stats](https://github-readme-stats.vercel.app/api?username=droidxrx)](website)
+
 [website]: https://github.com/droidxrx
