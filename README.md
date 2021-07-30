@@ -30,13 +30,6 @@
 
 ---
 
-### :zap: Recent GitHub Activity
-
-<!--START_SECTION:activity-->
-<!--END_SECTION:activity-->
-
----
-
 [![DroidXrX's GitHub stats](https://github-readme-stats.vercel.app/api?username=droidxrx&show_icons=true&hide_border=true)](website)
 
 [website]: https://github.com/droidxrx
