@@ -1,4 +1,4 @@
-### Hi there, I'm DroidXrX [DroidXrX][website] 👋
+### Hi there, I'm [DroidXrX][website] 👋
 
 [![Website](https://img.shields.io/website?label=DroidXrX&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Fdroidxrx)](https://github.com/droidxrx)
 
