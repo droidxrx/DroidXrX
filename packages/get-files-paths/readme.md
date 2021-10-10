@@ -20,4 +20,4 @@ import getall from '@droidxrx/get-files-paths';
 
 # LICENSE
 
-[MIT](../../LICENSE)
+[MIT](../../LICENSE.md)
