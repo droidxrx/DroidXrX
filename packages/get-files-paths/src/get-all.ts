@@ -11,39 +11,34 @@ interface GetFilesPaths {
 	ignoreNodeModules?: boolean;
 	only?: 'all' | 'path' | 'file';
 }
-function getting(pathsFiles: PathsFiles, options: GetFilesPaths, result: string[] = []) {
+async function getting(pathsFiles: PathsFiles, options: GetFilesPaths, result: string[] = []) {
 	pathsFiles = inputPathFile(pathsFiles);
 	result = result || [];
 
-	return new Promise((resolve: (value: string[]) => void, reject: (reason?: Error) => void) => {
-		try {
-			for await (const item of pathsFiles) {
-				if (options.ignoreNodeModules && path.basename(item) === 'node_modules') continue;
-				else if ((await lstat(item)).isDirectory()) {
-					for await (const dirent of await readdir(item, { withFileTypes: true })) {
-						if (options.ignoreNodeModules && dirent.name === 'node_modules') continue;
-						const dirents = path.join(item, dirent.name);
-						if (options.ignore.length > 0) {
-							const ignore = ignorePathFile(options.ignore);
-							if (!isMatches(dirents, ignore, { dot: true })) result = await getting(dirents, options, result);
-							if (options.only !== 'file' && !result.includes(item) && !isMatches(item, ignore, { dot: true })) {
-								result.push(item);
-							}
-						} else {
-							result = await getting(dirents, options, result);
-							if (options.only !== 'file' && !result.includes(item)) result.push(item);
-						}
-					}
-				} else if (options.ignore.length > 0) {
+	for await (const item of pathsFiles) {
+		if (options.ignoreNodeModules && path.basename(item) === 'node_modules') continue;
+		else if ((await lstat(item)).isDirectory()) {
+			for await (const dirent of await readdir(item, { withFileTypes: true })) {
+				if (options.ignoreNodeModules && dirent.name === 'node_modules') continue;
+				const dirents = path.join(item, dirent.name);
+				if (options.ignore.length > 0) {
 					const ignore = ignorePathFile(options.ignore);
-					if (options.only !== 'path' && !result.includes(item) && !isMatches(item, ignore, { dot: true })) result.push(item);
-				} else if (options.only !== 'path' && !result.includes(item)) result.push(item);
+					if (!isMatches(dirents, ignore, { dot: true })) result = await getting(dirents, options, result);
+					if (options.only !== 'file' && !result.includes(item) && !isMatches(item, ignore, { dot: true })) {
+						result.push(item);
+					}
+				} else {
+					result = await getting(dirents, options, result);
+					if (options.only !== 'file' && !result.includes(item)) result.push(item);
+				}
 			}
-			resolve(result);
-		} catch (error) {
-			reject(error);
-		}
-	});
+		} else if (options.ignore.length > 0) {
+			const ignore = ignorePathFile(options.ignore);
+			if (options.only !== 'path' && !result.includes(item) && !isMatches(item, ignore, { dot: true })) result.push(item);
+		} else if (options.only !== 'path' && !result.includes(item)) result.push(item);
+	}
+
+	return result;
 }
 
 function gettingSync(pathsFiles: PathsFiles, options: GetFilesPaths, result: string[] = []) {
@@ -83,7 +78,13 @@ export function getAll(pathsFiles: PathsFiles, options?: GetFilesPaths): Promise
 		};
 	} else if (!options) options = { only: 'all', ignoreNodeModules: true, ignore: [] };
 	else return Promise.reject(new TypeError('Options must object'));
-	return getting(pathsFiles, options);
+	return new Promise((resolve: (value: Promise<string[]>) => void, reject: (reason?: Error) => void) => {
+		try {
+			resolve(getting(pathsFiles, options));
+		} catch (error) {
+			reject(error);
+		}
+	});
 }
 
 export function getAllSync(pathsFiles: PathsFiles, options?: GetFilesPaths): string[] {
