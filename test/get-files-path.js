@@ -1,9 +1,9 @@
-const logger = require('fancy-log');
-const { lstatSync, readdirSync } = require('fs');
-const { isMatch } = require('micromatch');
-const path = require('path');
-
-lstatSync(path.join(__dirname, '../node_modules')).isDirectory();
-const nodeModules = path.join(__dirname, '../node_modules');
-const asd = readdirSync(nodeModules).filter((v) => isMatch(v, 'eslint-config*', { regex: true }));
-logger(asd);
+const getAll = require('@droidxrx/get-files-paths');
+const { join } = require('path');
+// console.log(getAll.getAllSync(join(__dirname, "../"), {"ignore": ["**/.git"], "only": "path"}))
+async function getAllAsync() {
+	const paths = [join(__dirname, "../")];
+	const result = await getAll.getAll(paths, { ignore: ['**/.git'], only: 'path' });
+	console.log(result)
+}
+getAllAsync()
