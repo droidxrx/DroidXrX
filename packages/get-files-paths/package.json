@@ -6,7 +6,7 @@
 	"types": "./lib/index.d.ts",
 	"scripts": {
 		"cleanPublish": "clean-publish",
-		"build": "rimraf ./lib && cls && tsc -P ./tsconfig.json",
+		"build": "rimraf ./lib && clear && node \"../../config/rollup-config/get-files-paths.js\"",
 		"watch": "tsc-watch -P ./tsconfig.json --onCompilationStarted \"rimraf ./lib\""
 	},
 	"repository": {
