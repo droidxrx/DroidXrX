@@ -8,7 +8,6 @@ module.exports = {
 				project: join(__dirname, 'tsconfig.json'),
 			},
 			extends: ['@droidxrx/eslint-config-droidxrx/typescript'],
-			rules: {},
 		},
 	],
 };
