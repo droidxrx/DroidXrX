@@ -1,0 +1,34 @@
+{
+	"folders": [
+		{
+			"path": "./node_modules",
+			"name": "node_modules"
+		},
+		{
+			"path": ".",
+			"name": "✨ root"
+		},
+		{
+			"path": "./packages",
+			"name": "⚒️ packages"
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true,
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true,
+			"**/*.lock": true,
+			"config/**/node_modules": true,
+			"packages/**/node_modules": true,
+			"node_modules": true,
+			"packages": true
+		},
+		"typescript.tsdk": "✨ root\\node_modules\\typescript\\lib",
+		"typescript.validate.enable": true
+	}
+}

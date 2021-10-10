@@ -1,0 +1,51 @@
+{
+	"name": "@droidxrx/get-files-paths",
+	"version": "1.0.0",
+	"description": "Get all file and directory.",
+	"main": "./lib/index.js",
+	"types": "./lib/index.d.ts",
+	"scripts": {
+		"cleanPublish": "clean-publish",
+		"build": "rimraf ./lib && cls && tsc -P ./tsconfig.json",
+		"watch": "tsc-watch -P ./tsconfig.json --onCompilationStarted \"rimraf ./lib\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/droidxrx/DroidXrX.git",
+		"directory": "packages/get-files-paths"
+	},
+	"keywords": [
+		"fs",
+		"recursive",
+		"readdir",
+		"readfile",
+		"get-path",
+		"get-file",
+		"get-all-file",
+		"get-all-dir"
+	],
+	"author": "DroidXrX <droidxrx@gmail.com> (https://github.com/droidxrx)",
+	"license": "MIT",
+	"bugs": "https://github.com/droidxrx/DroidXrX/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3A%22pkg%3A%20get-files-paths%22+is%3Aopen",
+	"homepage": "https://github.com/droidxrx/DroidXrX/tree/master/packages/get-files-paths#readme",
+	"clean-publish": {
+		"files": [
+			"yarn.lock",
+			"webpack.config.js",
+			"node_modules",
+			"src",
+			".gitignore",
+			".git"
+		],
+		"fields": [
+			"scripts",
+			"clean-publish",
+			"devDependencies"
+		],
+		"packageManager": "npm"
+	},
+	"devDependencies": {
+		"@types/micromatch": "^4.0.2",
+		"micromatch": "^4.0.4"
+	}
+}

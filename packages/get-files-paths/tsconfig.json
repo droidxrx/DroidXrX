@@ -1,0 +1,9 @@
+{
+	"extends": "@droidxrx/ts-config/tsconfig.base",
+	"compilerOptions": {
+		"rootDir": "./src",
+		"declaration": true,
+		"declarationDir": "lib",
+		"outDir": "lib"
+	}
+}

@@ -1,0 +1,10 @@
+{
+	"compilerOptions": {
+		"module": "ES2020",
+		"target": "ES2021",
+		"lib": ["DOM", "ES2021", "ESNext"],
+		"moduleResolution": "Node",
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true
+	}
+}

@@ -1,0 +1,22 @@
+{
+	"name": "@droidxrx/indodax-exchange",
+	"version": "1.0.0",
+	"description": "Indodax Exchange",
+	"main": "./server/index.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/droidxrx/indodax-find-scalping.git"
+	},
+	"keywords": [
+		"indodax"
+	],
+	"author": "DroidXrX <droidxrx@gmail.com> (https://github.com/droidxrx)",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/droidxrx/indodax-find-scalping/issues"
+	},
+	"homepage": "https://github.com/droidxrx/indodax-find-scalping#readme",
+	"scripts": {
+		"server": "ts-node -P ./server/tsconfig.json -T ./server/index.ts"
+	}
+}

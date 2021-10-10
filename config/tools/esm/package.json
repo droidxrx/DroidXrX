@@ -1,0 +1,20 @@
+{
+	"name": "@droidxrx/tools-esm",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "DroidXrX <droidxrx@gmail.com> (https://github.com/droidxrx)",
+	"bugs": "https://github.com/droidxrx/DroidXrX/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3A%22pkg%3A%20tools-esm%22+is%3Aopen",
+	"homepage": "https://github.com/droidxrx/DroidXrX#readme",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/droidxrx/DroidXrX.git",
+		"directory": "config/tools/esm"
+	}
+}

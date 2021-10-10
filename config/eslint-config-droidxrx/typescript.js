@@ -1,0 +1,40 @@
+/** @type {import("eslint").Linter.BaseConfig} */
+module.exports = {
+	root: true,
+	env: {
+		es6: true,
+		node: true,
+		commonjs: true,
+		es2021: true,
+		browser: true,
+	},
+	extends: [
+		'eslint-config-airbnb/base',
+		'eslint-config-airbnb-typescript',
+		'plugin:@typescript-eslint/recommended',
+		'plugin:@typescript-eslint/recommended-requiring-type-checking',
+		'prettier',
+	],
+	parser: '@typescript-eslint/parser',
+	parserOptions: {
+		sourceType: 'module',
+		ecmaVersion: 2021,
+	},
+	plugins: ['eslint-plugin-prettier'],
+	rules: {
+		'prettier/prettier': ['error', { endOfLine: 'lf', printWidth: 140, semi: true, singleQuote: true, useTabs: true }],
+		'react/jsx-filename-extension': 'off',
+		'no-param-reassign': 'off',
+		'import/no-extraneous-dependencies': 'off',
+		'no-tabs': 'off',
+		indent: 'off',
+		'no-async-promise-executor': 'off',
+		'no-restricted-syntax': 'off',
+		'@typescript-eslint/indent': ['error', 'tab'],
+		'max-len': ['error', 140],
+		'no-await-in-loop': 'off',
+		'no-continue': 'off',
+		'no-plusplus': 'off',
+	},
+	ignorePatterns: ['**/node_modules/**'],
+};
