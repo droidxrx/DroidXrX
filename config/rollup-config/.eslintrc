@@ -1,0 +1,3 @@
+{
+	"extends": ["@droidxrx/eslint-config-droidxrx"]
+}
