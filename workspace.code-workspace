@@ -1,20 +1,24 @@
 {
 	"folders": [
 		{
-			"path": "./node_modules",
-			"name": "node_modules"
+			"name": "🔰 node-module",
+			"path": "node_modules"
 		},
 		{
-			"path": ".",
-			"name": "✨ root"
+			"name": "✨ droidxrx",
+			"path": "."
 		},
 		{
-			"path": "./private",
-			"name": "⚒️ private"
+			"name": "⚙️ config",
+			"path": "config"
 		},
 		{
-			"path": "./packages",
-			"name": "⚒️ packages"
+			"name": "🔒 private",
+			"path": "private"
+		},
+		{
+			"name": "📦 packages",
+			"path": "packages"
 		}
 	],
 	"settings": {
@@ -31,9 +35,10 @@
 			"packages/**/node_modules": true,
 			"node_modules": true,
 			"packages": true,
-			"private": true
+			"private": true,
+			"config": true
 		},
-		"typescript.tsdk": "✨ root\\node_modules\\typescript\\lib",
+		"typescript.tsdk": "./node_modules/typescript/lib",
 		"typescript.validate.enable": true
 	}
 }
