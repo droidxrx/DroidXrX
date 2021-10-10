@@ -24,16 +24,8 @@
 	"settings": {
 		"git.ignoreLimitWarning": true,
 		"files.exclude": {
-			"**/.git": true,
-			"**/.svn": true,
-			"**/.hg": true,
-			"**/CVS": true,
-			"**/.DS_Store": true,
-			"**/Thumbs.db": true,
 			"**/*.lock": true,
-			"config/**/node_modules": true,
-			"packages/**/node_modules": true,
-			"node_modules": true,
+			"**/node_modules": true,
 			"packages": true,
 			"private": true,
 			"config": true
