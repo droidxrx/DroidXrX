@@ -3,7 +3,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 project("JSMeow")
 
-file(GLOB SOURCE_FILES "./src/lib/*.cpp" "./src/lib/*.h" "./src/lib/memory/*.cc" "./src/lib/memory/*.h")
+file(GLOB SOURCE_FILES "lib/*.cpp" "lib/*.h" "lib/memory/*.cc" "lib/memory/*.h")
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${CMAKE_JS_SRC})
 set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "" SUFFIX ".node")
 
