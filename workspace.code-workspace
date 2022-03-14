@@ -1,36 +1,32 @@
 {
 	"folders": [
 		{
-			"name": "🔰 node-module",
-			"path": "node_modules"
-		},
-		{
 			"name": "✨ droidxrx",
 			"path": "."
 		},
 		{
-			"name": "⚙️ config",
-			"path": "config"
+			"name": "📦 @droidxrx/jsmeow",
+			"path": "packages/JSMeow"
 		},
 		{
-			"name": "🔒 private",
-			"path": "private"
+			"name": "📦 @droidxrx/node-glfw-glew",
+			"path": "packages/node-glfw-glew"
 		},
 		{
-			"name": "📦 packages",
-			"path": "packages"
+			"name": "📦 @droidxrx/point-blank",
+			"path": "packages/pointblank"
 		}
 	],
 	"settings": {
-		"git.ignoreLimitWarning": true,
 		"files.exclude": {
-			"**/*.lock": true,
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true,
 			"**/node_modules": true,
-			"packages": true,
-			"private": true,
-			"config": true
-		},
-		"typescript.tsdk": "./node_modules/typescript/lib",
-		"typescript.validate.enable": true
+			"**/*.lock": true
+		}
 	}
 }

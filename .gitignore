@@ -1,4 +1,2 @@
-**/**/node_modules/**
-*.lock
-**/lib
-/private/**/
+**/node_modules
+**/*.lock

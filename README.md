@@ -2,7 +2,7 @@
 
 [![Website](https://img.shields.io/website?label=DroidXrX&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Fdroidxrx)](https://github.com/droidxrx)
 
-## I'm a Husband, Father, Developer, and Teacher!!
+## I'm a Freelancer and Cool Youth 😎
 
 -   🌱 I’m currently learning everything 🤣
 -   👯 I’m looking to collaborate with other content creators

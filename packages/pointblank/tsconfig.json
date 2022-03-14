@@ -1,0 +1,7 @@
+{
+	"extends": "@nodejs/tsconfig/tsconfig.base",
+	"compilerOptions": {
+		"declaration": false,
+		"rootDir": "./src"
+	}
+}

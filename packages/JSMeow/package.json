@@ -1,0 +1,39 @@
+{
+	"name": "@droidxrx/jsmeow",
+	"version": "1.0.0",
+	"types": "dist/index.d.ts",
+	"main": "./dist/cjs/index.js",
+	"exports": {
+		".": {
+			"require": "./dist/cjs/index.js",
+			"default": "./dist/esm/index.js"
+		}
+	},
+	"module": "./dist/esm/index.js",
+	"author": "DroidXrX",
+	"license": "MIT",
+	"private": false,
+	"engines": {
+		"node": ">=16.14.0"
+	},
+	"os": [
+		"win32"
+	],
+	"cpu": [
+		"x64"
+	],
+	"scripts": {
+		"build": "cmake-js rebuild --log-level http",
+		"build-cjs": "tsc -p ./tsconfig.cjs.json",
+		"build-esm": "tsc -p ./tsconfig.esm.json",
+		"build-all": "rimraf dist & cls && yarn build-cjs && yarn build-esm"
+	},
+	"dependencies": {
+		"node-addon-api": "^4.3.0"
+	},
+	"cmake-js": {
+		"runtime": "node",
+		"runtimeVersion": "16.14.0",
+		"arch": "x64"
+	}
+}

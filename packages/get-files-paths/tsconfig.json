@@ -1,6 +1,0 @@
-{
-	"extends": "@droidxrx/ts-config/tsconfig.base",
-	"compilerOptions": {
-		"rootDir": "./src"
-	}
-}
