@@ -18,6 +18,14 @@
 		"directory": "packages/JSMeow"
 	},
 	"license": "MIT",
+	"keywords": [
+		"JSMeow",
+		"pyMeow",
+		"hacking",
+		"esp",
+		"read-memory",
+		"write-memory"
+	],
 	"private": false,
 	"engines": {
 		"node": ">=16.14.0"
