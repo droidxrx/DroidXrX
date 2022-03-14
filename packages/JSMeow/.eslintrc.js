@@ -1,5 +1,6 @@
+const config = require('../../configs/eslint/ts');
 module.exports = {
-	extends: ['@nodejs/eslint-config-all/ts'],
+	...config,
 	parserOptions: {
 		tsconfigRootDir: `${__dirname}`,
 		project: ['tsconfig.esm.json'],

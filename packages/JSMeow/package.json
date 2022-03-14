@@ -10,7 +10,13 @@
 		}
 	},
 	"module": "./dist/esm/index.js",
-	"author": "DroidXrX",
+	"author": "DroidXrX <droidxrx@gmail.com> (https://github.com/droidxrx)",
+	"homepage": "https://github.com/droidxrx/DroidXrX/tree/master/packages/JSMeow#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/droidxrx/droidxrx-node.git",
+		"directory": "packages/JSMeow"
+	},
 	"license": "MIT",
 	"private": false,
 	"engines": {
@@ -23,13 +29,17 @@
 		"x64"
 	],
 	"scripts": {
-		"build": "cmake-js rebuild --log-level http",
-		"build-cjs": "tsc -p ./tsconfig.cjs.json",
-		"build-esm": "tsc -p ./tsconfig.esm.json",
-		"build-all": "rimraf dist & cls && yarn build-cjs && yarn build-esm"
+		"build-addon": "cmake-js rebuild",
+		"build-cjs": "npx tsc -p ./tsconfig.cjs.json",
+		"build-esm": "npx tsc -p ./tsconfig.esm.json",
+		"build": "npx rimraf dist build && npm run build-cjs && npm run build-esm && npm run build-addon"
 	},
 	"dependencies": {
 		"node-addon-api": "^4.3.0"
+	},
+	"devDependencies": {
+		"rimraf": "^3.0.2",
+		"typescript": "^4.6.2"
 	},
 	"cmake-js": {
 		"runtime": "node",

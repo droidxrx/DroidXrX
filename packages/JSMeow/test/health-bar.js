@@ -9,8 +9,8 @@ async function waits(ms) {
 async function main() {
 	const overlay = jsmeow.overlayInit();
 
-	const x = 500;
-	const y = 500;
+	const x = overlay.midX;
+	const y = overlay.midY;
 	const bar_length = 300;
 	const bar_width = 5;
 	const max_health = 200;
@@ -24,9 +24,8 @@ async function main() {
 
 			jsmeow.overlayUpdate();
 
-			await waits(10);
+			await waits(1);
 		}
-		await waits(10);
 	}
 }
 
