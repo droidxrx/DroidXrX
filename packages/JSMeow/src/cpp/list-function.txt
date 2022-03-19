@@ -52,3 +52,9 @@ drawTextLines {
     @param color array number
     @param offset number
 }
+
+drawPixel {
+    @param x number
+    @param y number
+    @param color array number
+}

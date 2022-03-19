@@ -81,7 +81,10 @@ Value drawTextLines(const CallbackInfo &info) {
 }
 
 Value drawPixel(const CallbackInfo &info) {
-	rgbColor color = colorRgb(info[0].As<Array>());
+	float x = info[0].As<Number>().FloatValue();
+	float y = info[1].As<Number>().FloatValue();
+	rgbColor color = colorRgb(info[2].As<Array>());
+
 	glBegin(GL_LINES);
 	glColor3f(color.r, color.g, color.b);
 	glVertex2f(x, y);
@@ -93,6 +96,7 @@ Value drawPixel(const CallbackInfo &info) {
 Object drawsInit(Env env, Object exports) {
 	exports.Set("drawText", Function::New(env, drawText));
 	exports.Set("drawTextLines", Function::New(env, drawTextLines));
+	exports.Set("drawPixel", Function::New(env, drawPixel));
 
 	return exports;
 }
