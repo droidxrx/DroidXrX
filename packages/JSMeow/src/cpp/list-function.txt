@@ -63,3 +63,20 @@ drawPixelV {
     @param pos vector2
     @param color array number
 }
+
+drawBox {
+    @param x number
+    @param y number
+    @param width number
+    @param height number
+    @param lineWidth number
+    @param color array number
+}
+
+drawBoxV {
+    @param pos vector2
+    @param width number
+    @param height number
+    @param lineWidth number
+    @param color array number
+}

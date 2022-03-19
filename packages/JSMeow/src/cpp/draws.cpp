@@ -99,11 +99,35 @@ Value drawPixelV(const CallbackInfo &info) {
 	return info.Env().Undefined();
 }
 
+void boxDraw(float x, float y, float width, float height, float lineWidth, rgbColor color) {
+	glLineWidth(lineWidth);
+	glBegin(GL_LINE_LOOP);
+	glColor3f(color.r, color.g, color.b);
+	glVertex2f(x, y);
+	glVertex2f(x + width, y);
+	glVertex2f(x + width, y + height);
+	glVertex2f(x, y + height);
+	glEnd();
+}
+
+Value drawBox(const CallbackInfo &info) {
+	boxDraw(info[0].As<Number>().FloatValue(), info[1].As<Number>().FloatValue(), info[2].As<Number>().FloatValue(), info[3].As<Number>().FloatValue(), info[4].As<Number>().FloatValue(), colorRgb(info[5].As<Array>()));
+	return info.Env().Undefined();
+}
+
+Value drawBoxV(const CallbackInfo &info) {
+	vec2 xy = getVec2(info[0].As<Object>());
+	boxDraw(xy.x, xy.y, info[1].As<Number>().FloatValue(), info[2].As<Number>().FloatValue(), info[3].As<Number>().FloatValue(), colorRgb(info[4].As<Array>()));
+	return info.Env().Undefined();
+}
+
 Object drawsInit(Env env, Object exports) {
 	exports.Set("drawText", Function::New(env, drawText));
 	exports.Set("drawTextLines", Function::New(env, drawTextLines));
 	exports.Set("drawPixel", Function::New(env, drawPixel));
 	exports.Set("drawPixelV", Function::New(env, drawPixelV));
+	exports.Set("drawBox", Function::New(env, drawBox));
+	exports.Set("drawBoxV", Function::New(env, drawBoxV));
 
 	return exports;
 }
