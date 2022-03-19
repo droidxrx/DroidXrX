@@ -80,28 +80,22 @@ Value drawTextLines(const CallbackInfo &info) {
 	return info.Env().Undefined();
 }
 
-Value drawPixel(const CallbackInfo &info) {
-	float x = info[0].As<Number>().FloatValue();
-	float y = info[1].As<Number>().FloatValue();
-	rgbColor color = colorRgb(info[2].As<Array>());
-
+void pixelDraw(float x, float y, rgbColor color) {
 	glBegin(GL_LINES);
 	glColor3f(color.r, color.g, color.b);
 	glVertex2f(x, y);
 	glVertex2f(x + 1, y + 1);
 	glEnd();
+}
+
+Value drawPixel(const CallbackInfo &info) {
+	pixelDraw(info[0].As<Number>().FloatValue(), info[1].As<Number>().FloatValue(), colorRgb(info[2].As<Array>()));
 	return info.Env().Undefined();
 }
 
 Value drawPixelV(const CallbackInfo &info) {
 	vec2 xy = getVec2(info[0].As<Object>());
-	rgbColor color = colorRgb(info[1].As<Array>());
-
-	glBegin(GL_LINES);
-	glColor3f(color.r, color.g, color.b);
-	glVertex2f(xy.x, xy.y);
-	glVertex2f(xy.x + 1, xy.y + 1);
-	glEnd();
+	pixelDraw(xy.x, xy.y, colorRgb(info[1].As<Array>()));
 	return info.Env().Undefined();
 }
 
