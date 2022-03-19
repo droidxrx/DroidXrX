@@ -93,10 +93,23 @@ Value drawPixel(const CallbackInfo &info) {
 	return info.Env().Undefined();
 }
 
+Value drawPixelV(const CallbackInfo &info) {
+	vec2 xy = getVec2(info[0].As<Object>());
+	rgbColor color = colorRgb(info[1].As<Array>());
+
+	glBegin(GL_LINES);
+	glColor3f(color.r, color.g, color.b);
+	glVertex2f(xy.x, xy.y);
+	glVertex2f(xy.x + 1, xy.y + 1);
+	glEnd();
+	return info.Env().Undefined();
+}
+
 Object drawsInit(Env env, Object exports) {
 	exports.Set("drawText", Function::New(env, drawText));
 	exports.Set("drawTextLines", Function::New(env, drawTextLines));
 	exports.Set("drawPixel", Function::New(env, drawPixel));
+	exports.Set("drawPixelV", Function::New(env, drawPixelV));
 
 	return exports;
 }

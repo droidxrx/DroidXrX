@@ -58,3 +58,8 @@ drawPixel {
     @param y number
     @param color array number
 }
+
+drawPixelV {
+    @param pos vector2
+    @param color array number
+}
