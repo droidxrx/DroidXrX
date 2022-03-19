@@ -1,0 +1,63 @@
+#include "misc.h"
+
+#include <GLFW/glfw3.h>
+#include <GLFW/glfw3native.h>
+
+Value isKeyPressed(const CallbackInfo &info) {
+	return Boolean::From(info.Env(), (bool)GetAsyncKeyState(info[0].As<Number>()));
+}
+
+Value pressKey(const CallbackInfo &info) {
+	INPUT input;
+	input.type = INPUT_KEYBOARD;
+	input.ki.wScan = 0;
+	input.ki.time = 0;
+	input.ki.dwExtraInfo = 0;
+	input.ki.dwFlags = 0;
+	input.ki.wVk = (int)info[0].As<Number>();
+	SendInput(1, &input, sizeof(input));
+
+	return info.Env().Undefined();
+}
+
+Value setForeground(const CallbackInfo &info) {
+	std::string winTitle = info[0].As<String>();
+	return Boolean::From(info.Env(), SetForegroundWindow(FindWindowA(NULL, winTitle.c_str())));
+}
+
+Value mouseMove(const CallbackInfo &info) {
+	Object ov = info[0].As<Object>();
+	float midX = ov.Get("midX").As<Number>();
+	float midY = ov.Get("midY").As<Number>();
+
+	INPUT input;
+	input.type = INPUT_MOUSE;
+	input.mi.dwFlags = MOUSEEVENTF_MOVE;
+	input.mi.dx = info[1].As<Number>().FloatValue() - midX;
+	input.mi.dy = info[2].As<Number>().FloatValue() - midY;
+	SendInput(1, &input, sizeof(input));
+	return info.Env().Undefined();
+}
+
+Value mouseClick(const CallbackInfo &info) {
+	INPUT down, release;
+	down.type = INPUT_MOUSE;
+	down.mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
+	release.type = INPUT_MOUSE;
+	release.mi.dwFlags = MOUSEEVENTF_LEFTUP;
+
+	SendInput(1, &down, sizeof(down));
+	Sleep(3);
+	SendInput(1, &release, sizeof(release));
+	return info.Env().Undefined();
+}
+
+Object miscInit(Env env, Object exports) {
+	exports.Set("isKeyPressed", Function::New(env, isKeyPressed));
+	exports.Set("pressKey", Function::New(env, pressKey));
+	exports.Set("setForeground", Function::New(env, setForeground));
+	exports.Set("mouseMove", Function::New(env, mouseMove));
+	exports.Set("mouseClick", Function::New(env, mouseClick));
+
+	return exports;
+}
