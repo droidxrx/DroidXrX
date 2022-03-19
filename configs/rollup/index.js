@@ -1,10 +1,11 @@
 import fs from 'fs-extra';
 import path from 'path';
 
-export { rollup } from 'rollup';
+export { rollup, defineConfig } from 'rollup';
 
 // Plugin
 export { nodeResolve } from '@rollup/plugin-node-resolve';
+export { default as cjs } from '@rollup/plugin-commonjs';
 export { default as typescript } from '@rollup/plugin-typescript';
 export { default as dts } from 'rollup-plugin-dts';
 export { default as ts } from 'rollup-plugin-ts';

@@ -1,15 +1,8 @@
 {
-	"name": "@droidxrx/jsmeow",
+	"name": "jsmeow",
 	"version": "1.0.0",
 	"types": "dist/index.d.ts",
-	"main": "./dist/cjs/index.js",
-	"exports": {
-		".": {
-			"require": "./dist/cjs/index.js",
-			"default": "./dist/esm/index.js"
-		}
-	},
-	"module": "./dist/esm/index.js",
+	"main": "./dist/index.js",
 	"author": "DroidXrX <droidxrx@gmail.com> (https://github.com/droidxrx)",
 	"homepage": "https://github.com/droidxrx/DroidXrX/tree/master/packages/JSMeow#readme",
 	"repository": {
@@ -37,27 +30,8 @@
 		"x64"
 	],
 	"scripts": {
-		"build-addon": "cmake-js rebuild",
-		"build-cjs": "npx tsc -p ./tsconfig.cjs.json",
-		"build-esm": "npx tsc -p ./tsconfig.esm.json",
-		"build": "npx rimraf dist build && npm run build-cjs && npm run build-esm && npm run build-addon"
-	},
-	"dependencies": {
-		"node-addon-api": "^4.3.0"
-	},
-	"cmake-js": {
-		"runtime": "node",
-		"arch": "x64"
-	},
-	"clean-publish": {
-		"withoutPublish": true,
-		"tempDir": "package",
-		"files": [
-			"build",
-			"src",
-			"test",
-			"tsconfig.cjs.json",
-			"tsconfig.esm.json"
-		]
+		"install": "ECHO ''",
+		"buildAddon": "rimraf build dist/addon/*.node && node-gyp rebuild --release && move \".\\build\\Release\\JSMeow.node\" \".\\dist\\addon\\JSMeow.node\" && rimraf build",
+		"buildts": "cls && rimraf dist/index.js temp && webpack"
 	}
 }

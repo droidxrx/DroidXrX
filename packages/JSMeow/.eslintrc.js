@@ -1,9 +1,20 @@
-const config = require('../../configs/eslint/ts');
+const configTS = require('../../configs/eslint/ts/index');
+const configCJS = require('../../configs/eslint/cjs/index');
+const { join: pathJoin } = require('path');
+
 module.exports = {
-	...config,
-	parserOptions: {
-		tsconfigRootDir: `${__dirname}`,
-		project: ['tsconfig.esm.json'],
-	},
-	ignorePatterns: ['*.js', '*.cjs', '*.d.ts'],
+	overrides: [
+		{
+			files: ['./src/*.ts'],
+			...configTS,
+			parserOptions: {
+				tsconfigRootDir: __dirname,
+				project: ['./tsconfig.json'],
+			},
+		},
+		{
+			files: ['test/*.js'],
+			...configCJS,
+		},
+	],
 };

@@ -4,11 +4,5 @@
 	"type": "module",
 	"main": "",
 	"license": "MIT",
-	"private": false,
-	"scripts": {
-		"start": "node --experimental-specifier-resolution=node --experimental-loader ts-node/esm src/main.ts"
-	},
-	"dependencies": {
-		"@droidxrx/jsmeow": "^1.0.0"
-	}
+	"private": false
 }
