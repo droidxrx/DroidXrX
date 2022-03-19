@@ -34,12 +34,16 @@ Value overlayInit(const CallbackInfo &info) {
 		result.Set("height", height);
 		result.Set("midX", width / 2);
 		result.Set("midY", height / 2);
+		result.Set("target", "FullScreen");
+		result.Set("targetHwnd", 0);
 	} else {
 		HWND hwnd = FindWindowA(NULL, target.c_str());
 		if (hwnd == 0) {
 			Error::New(env, "Window " + target + " not found.").ThrowAsJavaScriptException();
 			return env.Undefined();
 		}
+
+		SetForegroundWindow(hwnd);
 
 		GetWindowRect(hwnd, &rect);
 		width = rect.right - rect.left;
@@ -49,6 +53,8 @@ Value overlayInit(const CallbackInfo &info) {
 		result.Set("height", height);
 		result.Set("midX", width / 2);
 		result.Set("midY", height / 2);
+		result.Set("target", target);
+		result.Set("targetHwnd", (intptr_t)hwnd);
 	}
 
 	GLFWwindow *OverlayWindow = glfwCreateWindow(width - 1, height - 1, "JSMeow", NULL, NULL);
@@ -101,11 +107,18 @@ Value overlayClose(const CallbackInfo &info) {
 }
 
 Value overlayLoop(const CallbackInfo &info) {
-	if (GetAsyncKeyState(info[0].As<Object>().Get("exitKey").As<Number>()))
+	Object ov = info[0].As<Object>();
+	std::string target = ov.Get("target").As<String>();
+
+	if (GetAsyncKeyState(ov.Get("exitKey").As<Number>()))
 		overlayClose(info);
 	if (info[1].As<Boolean>())
 		overlayUpdate(info);
-	return Boolean::New(info.Env(), !(bool)glfwWindowShouldClose((GLFWwindow *)(intptr_t)info[0].As<Object>().Get("window").As<Number>()));
+	if (target != "FullScreen") {
+		bool isTargetRunning = IsWindow((HWND)(intptr_t)ov.Get("targetHwnd").As<Number>()) && !(bool)glfwWindowShouldClose((GLFWwindow *)(intptr_t)ov.Get("window").As<Number>());
+		return Boolean::New(info.Env(), isTargetRunning);
+	} else
+		return Boolean::New(info.Env(), !(bool)glfwWindowShouldClose((GLFWwindow *)(intptr_t)ov.Get("window").As<Number>()));
 }
 
 Value overlaySetPos(const CallbackInfo &info) {
