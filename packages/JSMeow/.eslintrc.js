@@ -6,6 +6,12 @@ module.exports = {
 	overrides: [
 		{
 			files: ['./src/ts/*.ts'],
+			env: {
+				browser: false,
+				node: true,
+				commonjs: true,
+				es2022: true,
+			},
 			...configTS,
 			parserOptions: {
 				tsconfigRootDir: __dirname,
