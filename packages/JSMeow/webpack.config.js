@@ -1,12 +1,12 @@
-const { defineWebpack } = require('../../configs/webpack');
 const path = require('path');
 
-module.exports = defineWebpack({
+module.exports = {
 	mode: 'production',
 	entry: './src/ts/index.ts',
 	output: {
-		filename: 'index.js',
 		path: path.resolve(__dirname, './dist'),
+		filename: 'index.js',
+		library: 'JSMeow',
 		libraryTarget: 'commonjs2',
 	},
 	target: 'node',
@@ -42,4 +42,4 @@ module.exports = defineWebpack({
 			},
 		],
 	},
-});
+};
