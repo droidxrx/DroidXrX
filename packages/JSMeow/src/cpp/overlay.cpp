@@ -108,17 +108,19 @@ Value overlayClose(const CallbackInfo &info) {
 
 Value overlayLoop(const CallbackInfo &info) {
 	Object ov = info[0].As<Object>();
-	std::string target = ov.Get("target").As<String>();
+	intptr_t targetHwnd = ov.Get("targetHwnd").As<Number>(), ovWindow = ov.Get("window").As<Number>();
+	bool shouldClose;
 
 	if (GetAsyncKeyState(ov.Get("exitKey").As<Number>()))
 		overlayClose(info);
 	if (info[1].As<Boolean>())
 		overlayUpdate(info);
-	if (target != "FullScreen") {
-		bool isTargetRunning = IsWindow((HWND)(intptr_t)ov.Get("targetHwnd").As<Number>()) && !(bool)glfwWindowShouldClose((GLFWwindow *)(intptr_t)ov.Get("window").As<Number>());
-		return Boolean::New(info.Env(), isTargetRunning);
-	} else
-		return Boolean::New(info.Env(), !(bool)glfwWindowShouldClose((GLFWwindow *)(intptr_t)ov.Get("window").As<Number>()));
+	if (targetHwnd != 0)
+		shouldClose = IsWindow((HWND)targetHwnd) && !(bool)glfwWindowShouldClose((GLFWwindow *)ovWindow);
+	else
+		shouldClose = !(bool)glfwWindowShouldClose((GLFWwindow *)ovWindow);
+
+	return Boolean::From(info.Env(), shouldClose);
 }
 
 Value overlaySetPos(const CallbackInfo &info) {
