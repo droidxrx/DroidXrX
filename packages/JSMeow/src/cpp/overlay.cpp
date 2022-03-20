@@ -82,8 +82,10 @@ Value overlayInit(const CallbackInfo &info) {
 	HWND hwnd = glfwGetWin32Window(OverlayWindow);
 	result.Set("hwnd", (intptr_t)hwnd);
 
-	if (target != "FullScreen")
-		SetWindowPos(hwnd, NULL, rect.left, rect.top + borderOffset, 0, 0, 0x0001);
+	if (target != "FullScreen" && !SetWindowPos(hwnd, NULL, rect.left, rect.top + borderOffset, 0, 0, 0x0001)) {
+		Error::New(env, "Failed to set position overlay").ThrowAsJavaScriptException();
+		return env.Undefined();
+	}
 
 	return result;
 }
