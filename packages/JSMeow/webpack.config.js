@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = defineWebpack({
 	mode: 'development',
-	entry: './src/index.ts',
+	entry: './src/ts/index.ts',
 	output: {
 		filename: 'index.js',
 		path: path.join(__dirname, './dist'),
