@@ -31,7 +31,7 @@
 	],
 	"scripts": {
 		"install": "ECHO ''",
-		"buildAddon": "rimraf build dist/*.node && node-gyp rebuild --release && move \".\\build\\Release\\JSMeow.node\" \".\\dist\\JSMeow.node\" && rimraf build",
-		"buildts": "cls && rimraf dist/index.js temp && webpack"
+		"buildAddon": "cls && rimraf dist/*.node && node-gyp rebuild --release",
+		"buildts": "cls && rimraf dist/*.js temp && webpack"
 	}
 }
