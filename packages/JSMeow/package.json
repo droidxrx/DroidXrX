@@ -32,7 +32,8 @@
 	"scripts": {
 		"install": "ECHO ''",
 		"buildAddon": "cls && rimraf dist/*.node && node-gyp rebuild --release",
-		"buildts": "cls && rimraf dist/*.js temp && webpack",
-		"builddts": "cls && dts-bundle-generator -o dist/index.d.ts --project ./tsconfig.json src/ts/index.ts --no-banner --no-check"
+		"build-ts-production": "SET NODE_ENV=production && cls && rimraf dist/*.js temp && webpack",
+		"buildts-ts-development": "SET NODE_ENV=development && cls && rimraf dist/*.js temp && webpack",
+		"build-dts": "cls && dts-bundle-generator -o dist/index.d.ts --project ./tsconfig.json src/ts/index.ts --no-banner --no-check"
 	}
 }
