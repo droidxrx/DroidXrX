@@ -42,9 +42,14 @@ Value mouseMove(const CallbackInfo &info) {
 Value mouseClick(const CallbackInfo &info) {
 	INPUT down, release;
 	down.type = INPUT_MOUSE;
-	down.mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
 	release.type = INPUT_MOUSE;
-	release.mi.dwFlags = MOUSEEVENTF_LEFTUP;
+	if (info[0].As<Boolean>()) {
+		down.mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
+		release.mi.dwFlags = MOUSEEVENTF_LEFTUP;
+	} else {
+		down.mi.dwFlags = MOUSEEVENTF_RIGHTDOWN;
+		release.mi.dwFlags = MOUSEEVENTF_RIGHTUP;
+	}
 
 	SendInput(1, &down, sizeof(down));
 	Sleep(3);
