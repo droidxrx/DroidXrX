@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-	mode: 'production',
+	mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
 	entry: './src/ts/index.ts',
 	output: {
 		path: path.resolve(__dirname, './dist'),
@@ -18,7 +18,7 @@ module.exports = {
 	},
 	externals: [/node_modules/],
 	optimization: {
-		minimize: false,
+		minimize: process.env.NODE_ENV === 'production' ? true : false,
 	},
 	module: {
 		rules: [
