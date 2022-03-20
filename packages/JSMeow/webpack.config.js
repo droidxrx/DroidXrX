@@ -1,7 +1,8 @@
 const path = require('path');
 
+const mode = process.env.NODE_ENV.trimEnd();
 module.exports = {
-	mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+	mode,
 	entry: './src/ts/index.ts',
 	output: {
 		path: path.resolve(__dirname, './dist'),
@@ -18,7 +19,7 @@ module.exports = {
 	},
 	externals: [/node_modules/],
 	optimization: {
-		minimize: process.env.NODE_ENV === 'production' ? true : false,
+		minimize: mode === 'production' ? true : false,
 	},
 	module: {
 		rules: [
