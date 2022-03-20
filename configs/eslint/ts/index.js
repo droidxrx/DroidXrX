@@ -18,5 +18,6 @@ module.exports = {
 		'object-curly-newline': 0,
 		'import/no-relative-packages': 0,
 		'no-constant-condition': 0,
+		'@typescript-eslint/no-var-requires': 0,
 	},
 };
