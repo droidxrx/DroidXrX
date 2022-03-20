@@ -6,16 +6,29 @@ module.exports = defineWebpack({
 	entry: './src/ts/index.ts',
 	output: {
 		filename: 'index.js',
-		path: path.join(__dirname, './dist'),
+		path: path.resolve(__dirname, './dist'),
 		libraryTarget: 'commonjs2',
 	},
 	target: 'node',
 	resolve: {
-		extensions: ['.ts', '.node', '.js', '.json'],
+		alias: {
+			JSMeow: path.resolve(__dirname, './build/Release/JSMeow.node'),
+		},
+		extensions: ['.ts', '.node', '.js'],
 	},
-	externals: [/node_modules/, /\.node$/],
+	externals: [/node_modules/],
+	optimization: {
+		minimize: false,
+	},
 	module: {
 		rules: [
+			{
+				test: /\.node$/,
+				loader: 'node-loader',
+				options: {
+					name: '[name].[ext]',
+				},
+			},
 			{
 				test: /\.ts$/,
 				use: [
