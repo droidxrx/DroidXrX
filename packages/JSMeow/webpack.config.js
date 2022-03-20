@@ -2,7 +2,7 @@ const { defineWebpack } = require('../../configs/webpack');
 const path = require('path');
 
 module.exports = defineWebpack({
-	mode: 'development',
+	mode: 'production',
 	entry: './src/ts/index.ts',
 	output: {
 		filename: 'index.js',
