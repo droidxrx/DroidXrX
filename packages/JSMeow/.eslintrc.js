@@ -5,7 +5,7 @@ const { join: pathJoin } = require('path');
 module.exports = {
 	overrides: [
 		{
-			files: ['./src/*.ts'],
+			files: ['./src/ts/*.ts'],
 			...configTS,
 			parserOptions: {
 				tsconfigRootDir: __dirname,
