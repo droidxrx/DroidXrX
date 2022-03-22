@@ -1,0 +1,15 @@
+{
+	"name": "cs-go",
+	"version": "1.0.0",
+	"description": "CS:GO Nodejs Hacking",
+	"main": "index.js",
+	"author": "DroidXrX <droidxrx@gmail.com> (https://github.com/droidxrx)",
+	"homepage": "https://github.com/droidxrx/DroidXrX/tree/master/packages/cs-go#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/droidxrx/DroidXrX.git",
+		"directory": "packages/cs-go"
+	},
+	"license": "MIT",
+	"private": true
+}
