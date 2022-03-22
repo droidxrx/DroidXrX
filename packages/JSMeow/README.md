@@ -11,8 +11,8 @@
 ## Installing:
 
 ```bash
-NPM: npm install @droidxrx/jsmeow
-YARN: yarn add @droidxrx/jsmeow
+NPM: npm install jsmeow
+YARN: yarn add jsmeow
 ```
 
 ## Example Usage
