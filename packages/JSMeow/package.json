@@ -1,6 +1,7 @@
 {
 	"name": "jsmeow",
 	"version": "1.0.0",
+	"description": "NodeJS for external Game Hacking",
 	"types": "dist/index.d.ts",
 	"main": "./dist/index.js",
 	"author": "DroidXrX <droidxrx@gmail.com> (https://github.com/droidxrx)",
