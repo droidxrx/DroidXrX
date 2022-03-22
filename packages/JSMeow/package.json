@@ -30,10 +30,34 @@
 		"x64"
 	],
 	"scripts": {
-		"install": "ECHO ''",
-		"buildAddon": "cls && rimraf dist/*.node && node-gyp rebuild --release",
-		"build-ts-production": "SET NODE_ENV=production && cls && rimraf dist/*.js temp && webpack",
-		"build-ts-development": "SET NODE_ENV=development && cls && rimraf dist/*.js temp && webpack",
-		"build-dts": "cls && dts-bundle-generator -o dist/index.d.ts --project ./tsconfig.json src/ts/index.ts --no-banner --no-check"
+		"build-addon": "rimraf CMakeLists.txt && node build.js &&cmake-js rebuild --cxx -r node -v 16.14.0 -a x64 --config Release && rimraf CMakeLists.txt",
+		"build-ts": "rollup -c rollup.config.js -w",
+		"build-dts": "rimraf dist/*.d.ts && dts-bundle-generator -o dist/index.d.ts --project ./tsconfig.json src/ts/index.ts --no-banner",
+		"build-all": "npm run build-addon && npm run build-dts && npm run build-ts",
+		"all-overlay": "ts-node example/all-overlay.ts -T -P ./tsconfig.json",
+		"test-overlay": "ts-node example/test-overlay.ts -T -P ./tsconfig.json",
+		"test-assault-cube": "ts-node example/assault-cube.ts -T -P ./tsconfig.json"
+	},
+	"devDependencies": {
+		"node-addon-api": "^4.3.0",
+		"fs-extra": "^10.0.1",
+		"rimraf": "^3.0.2",
+		"ts-node": "^10.7.0",
+		"typescript": "^4.6.2"
+	},
+	"clean-publish": {
+		"files": [
+			"build",
+			"example",
+			"external",
+			"src",
+			".clang-format",
+			"build.js",
+			"CMakeLists.txt",
+			"rollup.config.js",
+			"tsconfig.json"
+		],
+		"withoutPublish": true,
+		"tempDir": "package"
 	}
 }

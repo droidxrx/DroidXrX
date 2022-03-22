@@ -5,7 +5,7 @@ float getNapiFloat(Value value) {
 }
 
 float degToRad(float a) {
-	return a * (PI / 180);
+	return a * (3.141592741F / 180);
 }
 
 rgbColor colorRgb(Array color) {
@@ -14,15 +14,6 @@ rgbColor colorRgb(Array color) {
 	rgb.g = getNapiFloat(color.Get(1U));
 	rgb.b = getNapiFloat(color.Get(2U));
 	return rgb;
-}
-
-rgbaColor colorRgba(Array color) {
-	rgbaColor rgba;
-	rgba.r = getNapiFloat(color.Get(0U));
-	rgba.g = getNapiFloat(color.Get(1U));
-	rgba.b = getNapiFloat(color.Get(2U));
-	rgba.a = getNapiFloat(color.Get(3U));
-	return rgba;
 }
 
 vec2 getVec2(Object obj) {
@@ -51,10 +42,10 @@ void boxDraw(float x, float y, float width, float height, float lineWidth, rgbCo
 	glEnd();
 }
 
-void alphaBoxDraw(float x, float y, float width, float height, rgbaColor color, rgbColor outlineColor) {
+void alphaBoxDraw(float x, float y, float width, float height, rgbColor color, rgbColor outlineColor, float alpha) {
 	boxDraw(x, y, width, height, 1.0, outlineColor);
 	glBegin(GL_POLYGON);
-	glColor4f(color.r, color.g, color.b, color.a);
+	glColor4f(color.r, color.g, color.b, alpha);
 	glVertex2f(x, y);
 	glVertex2f(x + width, y);
 	glVertex2f(x + width, y + height);
@@ -110,14 +101,14 @@ void lineDraw(float x1, float y1, float x2, float y2, float lineWidth, rgbColor 
 	glEnd();
 }
 
-void dashedLineDraw(float x1, float y1, float x2, float y2, float lineWidth, int factor, int pattern, rgbaColor color) {
+void dashedLineDraw(float x1, float y1, float x2, float y2, float lineWidth, int factor, int pattern, rgbColor color, float alpha) {
 	glPushAttrib(GL_ENABLE_BIT);
 	glLineStipple(factor, pattern);
 	glLineWidth(lineWidth);
 	glEnable(GL_LINE_STIPPLE);
 
 	glBegin(GL_LINES);
-	glColor4f(color.r, color.g, color.b, color.a);
+	glColor4f(color.r, color.g, color.b, alpha);
 	glVertex2f(x1, y1);
 	glVertex2f(x2, y2);
 	glEnd();
@@ -191,13 +182,13 @@ void polyDraw(float x, float y, float radius, float rotation, int sides, rgbColo
 	glPopMatrix();
 }
 
-void customShapeDraw(Array points, rgbaColor color, bool filled) {
+void customShapeDraw(Array points, rgbColor color, bool filled, float alpha) {
 	if (filled)
 		glBegin(GL_POLYGON);
 	else
 		glBegin(GL_LINE_LOOP);
 
-	glColor4f(color.r, color.g, color.b, color.a);
+	glColor4f(color.r, color.g, color.b, alpha);
 
 	for (uint32_t i = 0; i < points.Length(); i++) {
 		Object tepmVec2 = points.Get(i).As<Object>();

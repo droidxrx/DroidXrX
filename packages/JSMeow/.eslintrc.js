@@ -5,7 +5,7 @@ const { join: pathJoin } = require('path');
 module.exports = {
 	overrides: [
 		{
-			files: ['./src/ts/*.ts'],
+			files: ['./src/ts/*.ts', './example/*.ts'],
 			env: {
 				browser: false,
 				node: true,
@@ -19,8 +19,11 @@ module.exports = {
 			},
 		},
 		{
-			files: ['test/*.js'],
+			files: ['example/*.js'],
 			...configCJS,
 		},
 	],
+	rules: {
+		'sort-imports': ['error', { ignoreCase: true }],
+	},
 };

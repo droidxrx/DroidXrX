@@ -11,7 +11,7 @@ Value drawText(const CallbackInfo &info) {
 	glWindowPos2f(x, y);
 	glPushAttrib(GL_LIST_BIT);
 	glListBase(base - 32);
-	glCallLists(text.length(), GL_UNSIGNED_BYTE, text.c_str());
+	glCallLists((int)text.length(), GL_UNSIGNED_BYTE, text.c_str());
 	glPopAttrib();
 	return info.Env().Undefined();
 }
@@ -34,7 +34,7 @@ Value drawTextLines(const CallbackInfo &info) {
 	for (uint32_t i = 0; i < lines.Length(); i++) {
 		std::string tempStr = lines.Get(i).As<String>();
 		glWindowPos2f(x, y);
-		glCallLists(tempStr.length(), GL_UNSIGNED_BYTE, tempStr.c_str());
+		glCallLists((int)tempStr.length(), GL_UNSIGNED_BYTE, tempStr.c_str());
 		y = y - (height + offset);
 	}
 
@@ -65,13 +65,13 @@ Value drawBoxV(const CallbackInfo &info) {
 }
 
 Value drawAlphaBox(const CallbackInfo &info) {
-	alphaBoxDraw(getNapiFloat(info[0]), getNapiFloat(info[1]), getNapiFloat(info[2]), getNapiFloat(info[3]), colorRgba(info[4].As<Array>()), colorRgb(info[5].As<Array>()));
+	alphaBoxDraw(getNapiFloat(info[0]), getNapiFloat(info[1]), getNapiFloat(info[2]), getNapiFloat(info[3]), colorRgb(info[4].As<Array>()), colorRgb(info[5].As<Array>()), getNapiFloat(info[6]));
 	return info.Env().Undefined();
 }
 
 Value drawAlphaBoxV(const CallbackInfo &info) {
 	vec2 xy = getVec2(info[0].As<Object>());
-	alphaBoxDraw(xy.x, xy.y, getNapiFloat(info[1]), getNapiFloat(info[2]), colorRgba(info[3].As<Array>()), colorRgb(info[4].As<Array>()));
+	alphaBoxDraw(xy.x, xy.y, getNapiFloat(info[1]), getNapiFloat(info[2]), colorRgb(info[3].As<Array>()), colorRgb(info[4].As<Array>()), getNapiFloat(info[5]));
 	return info.Env().Undefined();
 }
 
@@ -99,14 +99,14 @@ Value drawLineV(const CallbackInfo &info) {
 }
 
 Value drawDashedLine(const CallbackInfo &info) {
-	dashedLineDraw(getNapiFloat(info[0]), getNapiFloat(info[1]), getNapiFloat(info[2]), getNapiFloat(info[3]), getNapiFloat(info[4]), info[5].As<Number>(), info[6].As<Number>(), colorRgba(info[7].As<Array>()));
+	dashedLineDraw(getNapiFloat(info[0]), getNapiFloat(info[1]), getNapiFloat(info[2]), getNapiFloat(info[3]), getNapiFloat(info[4]), info[5].As<Number>(), info[6].As<Number>(), colorRgb(info[7].As<Array>()), getNapiFloat(info[8]));
 	return info.Env().Undefined();
 }
 
 Value drawDashedLineV(const CallbackInfo &info) {
 	vec2 xy1 = getVec2(info[0].As<Object>());
 	vec2 xy2 = getVec2(info[1].As<Object>());
-	dashedLineDraw(xy1.x, xy1.y, xy2.x, xy2.y, getNapiFloat(info[2]), info[3].As<Number>(), info[4].As<Number>(), colorRgba(info[5].As<Array>()));
+	dashedLineDraw(xy1.x, xy1.y, xy2.x, xy2.y, getNapiFloat(info[2]), info[3].As<Number>(), info[4].As<Number>(), colorRgb(info[5].As<Array>()), getNapiFloat(info[6]));
 	return info.Env().Undefined();
 }
 
@@ -160,7 +160,7 @@ Value drawPolyV(const CallbackInfo &info) {
 }
 
 Value drawCustomShape(const CallbackInfo &info) {
-	customShapeDraw(info[0].As<Array>(), colorRgba(info[1].As<Array>()), info[2].As<Boolean>());
+	customShapeDraw(info[0].As<Array>(), colorRgb(info[1].As<Array>()), info[2].As<Boolean>(), getNapiFloat(info[3]));
 	return info.Env().Undefined();
 }
 

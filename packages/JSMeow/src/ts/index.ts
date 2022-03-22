@@ -1,12 +1,19 @@
-import * as overlay from './overlay';
-import * as draw from './draw';
+import overlay from './overlay';
+import draw from './draw';
+import misc from './misc';
+import vector from './vector';
+import Memory from './memory';
 
 export * from './overlay';
 export * from './draw';
+export * from './misc';
+export * from './vector';
+export { default as Memory } from './memory';
 
-const _default = {
-	overlay,
-	draw,
+export default {
+	...overlay,
+	...draw,
+	...misc,
+	...vector,
+	Memory,
 };
-
-export default _default;
