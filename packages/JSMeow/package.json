@@ -36,7 +36,8 @@
 		"build-all": "npm run build-addon && npm run build-dts && npm run build-ts",
 		"all-overlay": "ts-node example/all-overlay.ts -T -P ./tsconfig.json",
 		"test-overlay": "ts-node example/test-overlay.ts -T -P ./tsconfig.json",
-		"test-assault-cube": "ts-node example/assault-cube.ts -T -P ./tsconfig.json"
+		"test-assault-cube": "ts-node example/assault-cube.ts -T -P ./tsconfig.json",
+		"test-cs-go": "ts-node example/cs_go.ts -T -P ./tsconfig.json"
 	},
 	"devDependencies": {
 		"node-addon-api": "^4.3.0",
