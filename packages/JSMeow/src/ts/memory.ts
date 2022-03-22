@@ -1,4 +1,4 @@
-import { dataType, memory, vector3, writeValue, vector4, ReturnType } from './addon';
+import { dataType, memory, ReturnType, Vector3, Vector4, writeValue } from './addon';
 
 export default class Memory {
 	#handle: number;
@@ -227,10 +227,10 @@ export default class Memory {
 		return memory.writeMemory(this.#handle, address, value, 'string');
 	}
 
-	writeVector3(address: number, value: vector3) {
+	writeVector3(address: number, value: Vector3) {
 		return memory.writeMemory(this.#handle, address, value, 'vector3');
 	}
-	writeVector4(address: number, value: vector4) {
+	writeVector4(address: number, value: Vector4) {
 		return memory.writeMemory(this.#handle, address, value, 'vector4');
 	}
 }

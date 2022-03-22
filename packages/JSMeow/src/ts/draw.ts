@@ -1,12 +1,12 @@
-import { draws, Font, RGB, vector2 } from './addon';
+import { draws, Font, RGB, Vector2 } from './addon';
 import {
 	errorMessage,
+	isArray,
 	isBoolean,
 	isNumber,
 	isObject,
 	isString,
 	isVector2,
-	isArray,
 } from './checking-params';
 
 export function drawAlphaBox(
@@ -34,7 +34,7 @@ export function drawAlphaBox(
 	draws.drawAlphaBox(x, y, width, height, color, outlineColor, alpha);
 }
 export function drawAlphaBoxV(
-	pos: vector2,
+	pos: Vector2,
 	width: number,
 	height: number,
 	color: RGB,
@@ -76,7 +76,7 @@ export function drawBox(
 	draws.drawBox(x, y, width, height, lineWidth, color);
 }
 export function drawBoxV(
-	pos: vector2,
+	pos: Vector2,
 	width: number,
 	height: number,
 	lineWidth: number,
@@ -110,7 +110,7 @@ export function drawCircle(
 	if (!isBoolean(filled)) throw errorMessage.filled;
 	draws.drawCircle(x, y, radius, color, filled);
 }
-export function drawCircleV(pos: vector2, radius: number, color: RGB, filled = true) {
+export function drawCircleV(pos: Vector2, radius: number, color: RGB, filled = true) {
 	const isVec2 = isVector2(pos);
 	if (isVec2 !== true) throw new TypeError(isVec2);
 	if (!isNumber(radius)) throw errorMessage.radius;
@@ -146,7 +146,7 @@ export function drawCornerBox(
 	draws.drawCornerBox(x, y, width, height, color, outlineColor, lineWidth);
 }
 export function drawCornerBoxV(
-	pos: vector2,
+	pos: Vector2,
 	width: number,
 	height: number,
 	color: RGB,
@@ -169,7 +169,7 @@ export function drawCornerBoxV(
 	draws.drawCornerBoxV(pos, width, height, color, outlineColor, lineWidth);
 }
 export function drawCustomShape(
-	points: vector2[],
+	points: Vector2[],
 	color: RGB,
 	filled = true,
 	alpha = 1.0
@@ -209,8 +209,8 @@ export function drawDashedLine(
 	draws.drawDashedLine(x1, y1, x2, y2, lineWidth, factor, pattern, color, alpha);
 }
 export function drawDashedLineV(
-	pos1: vector2,
-	pos2: vector2,
+	pos1: Vector2,
+	pos2: Vector2,
 	lineWidth: number,
 	color: RGB,
 	factor = 2,
@@ -250,7 +250,7 @@ export function drawLine(
 	if (!isNumber(color[2])) throw errorMessage.colorIndex3;
 	draws.drawLine(x1, y1, x2, y2, lineWidth, color);
 }
-export function drawLineV(pos1: vector2, pos2: vector2, lineWidth: number, color: RGB) {
+export function drawLineV(pos1: Vector2, pos2: Vector2, lineWidth: number, color: RGB) {
 	const isVec21 = isVector2(pos1);
 	const isVec22 = isVector2(pos2);
 	if (isVec21 !== true) throw new TypeError(isVec21);
@@ -271,7 +271,7 @@ export function drawPixel(x: number, y: number, color: RGB) {
 	if (!isNumber(color[2])) throw errorMessage.colorIndex3;
 	draws.drawPixel(x, y, color);
 }
-export function drawPixelV(pos: vector2, color: RGB) {
+export function drawPixelV(pos: Vector2, color: RGB) {
 	const isVec2 = isVector2(pos);
 	if (isVec2 !== true) throw new TypeError(isVec2);
 	if (!isArray(color)) throw errorMessage.color;
@@ -300,7 +300,7 @@ export function drawPoly(
 	draws.drawPoly(x, y, radius, rotation, sides, color);
 }
 export function drawPolyV(
-	pos: vector2,
+	pos: Vector2,
 	radius: number,
 	rotation: number,
 	sides: number,
@@ -337,7 +337,7 @@ export function drawRadCircle(
 	draws.drawRadCircle(x, y, radius, startValue, endValue, color);
 }
 export function drawRadCircleV(
-	pos: vector2,
+	pos: Vector2,
 	radius: number,
 	startValue: number,
 	endValue: number,
@@ -398,8 +398,8 @@ export function drawValueBar(
 	draws.drawValueBar(x1, y1, x2, y2, width, maxValue, value, vertical);
 }
 export function drawValueBarV(
-	pos1: vector2,
-	pos2: vector2,
+	pos1: Vector2,
+	pos2: Vector2,
 	width: number,
 	maxValue: number,
 	value: number,

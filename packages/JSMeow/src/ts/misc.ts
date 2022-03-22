@@ -1,4 +1,3 @@
-import { miscs, Overlay, vector3 } from './addon';
 import {
 	isArray,
 	isBoolean,
@@ -7,6 +6,7 @@ import {
 	isString,
 	isVector3,
 } from './checking-params';
+import { miscs, Overlay, Vector3 } from './addon';
 import vector from './vector';
 
 export async function waits(ms: number) {
@@ -34,9 +34,7 @@ export function mouseClick(leftOrRight = true) {
 }
 export function mouseMove(overlay: Overlay, x: number, y: number) {
 	if (!isObject(overlay))
-		throw new TypeError(
-			'Parameter overlay must be object get from Function overlayInit'
-		);
+		throw new TypeError('Parameter overlay must be object get from Function overlayInit');
 	if (!isNumber(x)) throw new TypeError('Parameter x must be number');
 	if (!isNumber(y)) throw new TypeError('Parameter y must be number');
 
@@ -48,11 +46,9 @@ export function setForeground(winTitle: string) {
 	miscs.setForeground(winTitle);
 }
 
-export function WorldToScreenOpenGL(overlay: Overlay, matrix: number[], pos: vector3) {
+export function WorldToScreenOpenGL(overlay: Overlay, matrix: number[], pos: Vector3) {
 	if (!isObject(overlay))
-		throw new TypeError(
-			'Parameter overlay must be object get from Function overlayInit'
-		);
+		throw new TypeError('Parameter overlay must be object get from Function overlayInit');
 	if (!isArray(matrix)) throw new TypeError('Parameter matrix must be array float');
 	const isVec3 = isVector3(pos);
 	if (isVec3 !== true) throw new TypeError(isVec3);
@@ -76,11 +72,9 @@ export function WorldToScreenOpenGL(overlay: Overlay, matrix: number[], pos: vec
 	return result;
 }
 
-export function WorldToScreenDirectX(overlay: Overlay, matrix: number[], pos: vector3) {
+export function WorldToScreenDirectX(overlay: Overlay, matrix: number[], pos: Vector3) {
 	if (!isObject(overlay))
-		throw new TypeError(
-			'Parameter overlay must be object get from Function overlayInit'
-		);
+		throw new TypeError('Parameter overlay must be object get from Function overlayInit');
 	if (!isArray(matrix)) throw new TypeError('Parameter matrix must be array float');
 	const isVec3 = isVector3(pos);
 	if (isVec3 !== true) throw new TypeError(isVec3);

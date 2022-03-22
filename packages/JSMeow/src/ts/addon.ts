@@ -19,18 +19,18 @@ export interface Font {
 
 export type RGB = number[];
 
-export interface vector2 {
+export interface Vector2 {
 	x: number;
 	y: number;
 }
 
-export interface vector3 {
+export interface Vector3 {
 	x: number;
 	y: number;
 	z: number;
 }
 
-export interface vector4 {
+export interface Vector4 {
 	w: number;
 	x: number;
 	y: number;
@@ -38,8 +38,8 @@ export interface vector4 {
 }
 
 export type dataType = "byte" | "int" | "int32" | "uint32" | "int64" | "uint64" | "dword" | "short" | "long" | "float" | "double" | "boolean" | "pointer" | "string" |  "vector3" | "vector4"; // prettier-ignore
-export type ReturnType <T extends dataType> = T extends "float" ? number : T extends "double" ? number : T extends "byte" ? number : T extends "int" ? number : T extends "int32" ? number : T extends "uint32" ? number : T extends "int64" ? number : T extends "uint64" ? number : T extends "dword" ? number : T extends "short" ? number : T extends "long" ? number : T extends "boolean" ? boolean : T extends "pointer" ? number : T extends "string" ? string : T extends "vector3" ? vector3 : T extends "vector4" ? vector4 : void; // prettier-ignore
-export type writeValue = number | string | boolean | vector3 | vector4;
+export type ReturnType <T extends dataType> = T extends "float" ? number : T extends "double" ? number : T extends "byte" ? number : T extends "int" ? number : T extends "int32" ? number : T extends "uint32" ? number : T extends "int64" ? number : T extends "uint64" ? number : T extends "dword" ? number : T extends "short" ? number : T extends "long" ? number : T extends "boolean" ? boolean : T extends "pointer" ? number : T extends "string" ? string : T extends "vector3" ? Vector3 : T extends "vector4" ? Vector4 : void; // prettier-ignore
+export type writeValue = number | string | boolean | Vector3 | Vector4;
 
 export interface ProcessObject {
 	dwSize: number;
@@ -83,7 +83,7 @@ interface Addons {
 			alpha: number
 		) => void;
 		drawAlphaBoxV: (
-			pos: vector2,
+			pos: Vector2,
 			width: number,
 			height: number,
 			color: RGB,
@@ -99,7 +99,7 @@ interface Addons {
 			color: RGB
 		) => void;
 		drawBoxV: (
-			pos: vector2,
+			pos: Vector2,
 			width: number,
 			height: number,
 			lineWidth: number,
@@ -112,7 +112,7 @@ interface Addons {
 			color: RGB,
 			filled: boolean
 		) => void;
-		drawCircleV: (pos: vector2, radius: number, color: RGB, filled: boolean) => void;
+		drawCircleV: (pos: Vector2, radius: number, color: RGB, filled: boolean) => void;
 		drawCornerBox: (
 			x: number,
 			y: number,
@@ -123,7 +123,7 @@ interface Addons {
 			lineWidth: number
 		) => void;
 		drawCornerBoxV: (
-			pos: vector2,
+			pos: Vector2,
 			width: number,
 			height: number,
 			color: RGB,
@@ -131,7 +131,7 @@ interface Addons {
 			lineWidth: number
 		) => void;
 		drawCustomShape: (
-			points: vector2[],
+			points: Vector2[],
 			color: RGB,
 			filled: boolean,
 			alpha: number
@@ -148,8 +148,8 @@ interface Addons {
 			alpha: number
 		) => void;
 		drawDashedLineV: (
-			pos1: vector2,
-			pos2: vector2,
+			pos1: Vector2,
+			pos2: Vector2,
 			lineWidth: number,
 			factor: number,
 			pattern: number,
@@ -164,9 +164,9 @@ interface Addons {
 			lineWidth: number,
 			color: RGB
 		) => void;
-		drawLineV: (pos1: vector2, pos2: vector2, lineWidth: number, color: RGB) => void;
+		drawLineV: (pos1: Vector2, pos2: Vector2, lineWidth: number, color: RGB) => void;
 		drawPixel: (x: number, y: number, color: RGB) => void;
-		drawPixelV: (pos: vector2, color: RGB) => void;
+		drawPixelV: (pos: Vector2, color: RGB) => void;
 		drawPoly: (
 			x: number,
 			y: number,
@@ -176,7 +176,7 @@ interface Addons {
 			color: RGB
 		) => void;
 		drawPolyV: (
-			pos: vector2,
+			pos: Vector2,
 			radius: number,
 			rotation: number,
 			sides: number,
@@ -191,7 +191,7 @@ interface Addons {
 			color: RGB
 		) => void;
 		drawRadCircleV: (
-			pos: vector2,
+			pos: Vector2,
 			radius: number,
 			startValue: number,
 			endValue: number,
@@ -216,8 +216,8 @@ interface Addons {
 			vertical: boolean
 		) => void;
 		drawValueBarV: (
-			pos1: vector2,
-			pos2: vector2,
+			pos1: Vector2,
+			pos2: Vector2,
 			width: number,
 			maxValue: number,
 			value: number,
@@ -272,10 +272,7 @@ interface Addons {
 			patternOffset: number
 		) => number;
 		injectDll: (handle: number, dllPath: string) => void;
-		unloadDll: (
-			handle: number,
-			moduleNameOrModuleBaseAddress: string | number
-		) => void;
+		unloadDll: (handle: number, moduleNameOrModuleBaseAddress: string | number) => void;
 	};
 }
 

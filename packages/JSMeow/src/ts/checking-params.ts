@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, no-prototype-builtins */
-import { vector2, vector3 } from './addon';
+import { Vector2, Vector3 } from './addon';
 
 export function isArray(arr: any) {
 	return Array.isArray(arr);
@@ -16,7 +16,7 @@ export function isString(str: string) {
 export function isNumber(num: number) {
 	return typeof num === 'number';
 }
-export function isVector2(vec2: vector2) {
+export function isVector2(vec2: Vector2) {
 	let result: string | boolean;
 
 	if (!isObject(vec2)) result = 'Vector2 must be object';
@@ -28,7 +28,7 @@ export function isVector2(vec2: vector2) {
 
 	return result;
 }
-export function isVector3(vec3: vector3) {
+export function isVector3(vec3: Vector3) {
 	let result: string | boolean;
 
 	if (!isObject(vec3)) result = 'Vector3 must be object';
@@ -57,9 +57,7 @@ export const errorMessage = {
 	factor: new TypeError('Parameter factor must be number'),
 	pattern: new TypeError('Parameter pattern must be number'),
 	color: new TypeError('Parameter color must be array rgb [255, 255, 255]'),
-	outlineColor: new TypeError(
-		'Parameter outlineColor must be array rgb [255, 255, 255]'
-	),
+	outlineColor: new TypeError('Parameter outlineColor must be array rgb [255, 255, 255]'),
 	alpha: new TypeError('Parameter alpha must be number'),
 	lineWidth: new TypeError('Parameter lineWidth must be number'),
 	rotation: new TypeError('Parameter rotation must be number'),
