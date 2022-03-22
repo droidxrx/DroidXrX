@@ -11,6 +11,10 @@
 		{
 			"name": "📦 @droidxrx/point-blank",
 			"path": "packages/pointblank"
+		},
+		{
+			"name": "📦 @droidxrx/cs-go",
+			"path": "packages/cs-go"
 		}
 	],
 	"settings": {
