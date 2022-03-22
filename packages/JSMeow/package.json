@@ -40,6 +40,7 @@
 		"test-cs-go": "ts-node example/cs_go.ts -T -P ./tsconfig.json"
 	},
 	"devDependencies": {
+		"@types/superagent": "^4.1.15",
 		"node-addon-api": "^4.3.0",
 		"fs-extra": "^10.0.1",
 		"rimraf": "^3.0.2",
