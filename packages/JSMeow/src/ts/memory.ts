@@ -1,6 +1,6 @@
 import { dataType, memory, ReturnType, Vector3, Vector4, writeValue } from './addon';
 
-export default class Memory {
+export class Memory {
 	#handle: number;
 
 	openProcess(processName: string) {
@@ -234,3 +234,10 @@ export default class Memory {
 		return memory.writeMemory(this.#handle, address, value, 'vector4');
 	}
 }
+
+export const JSMemory = new Memory();
+
+export default {
+	Memory,
+	JSMemory,
+};
