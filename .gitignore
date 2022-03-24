@@ -2,5 +2,5 @@
 **/*.lock
 **/packages
 **/package-lock.json
-**/package.
+**/package.json
 **/*.code-workspace
