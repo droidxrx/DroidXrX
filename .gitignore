@@ -1,6 +1,0 @@
-**/node_modules
-**/*.lock
-**/packages
-**/package-lock.json
-**/package.json
-**/*.code-workspace
