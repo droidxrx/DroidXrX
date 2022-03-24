@@ -1,7 +1,5 @@
 **/node_modules
 **/*.lock
-**/*.node
-**/build
-**/.cache
-**/dist
-**/CMakeLists.txt
+**/packages
+**/package-lock.json
+**/package.json
