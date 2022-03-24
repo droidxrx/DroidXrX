@@ -30,9 +30,10 @@ Value mouseMove(const CallbackInfo &info) {
 	int32_t midX = ov.Get("midX").As<Number>();
 	int32_t midY = ov.Get("midY").As<Number>();
 
-	INPUT input;
+	INPUT input = {};
 	input.type = INPUT_MOUSE;
 	input.mi.dwFlags = MOUSEEVENTF_MOVE;
+	input.mi.time = 0;
 	input.mi.dx = (int32_t)info[1].As<Number>() - midX;
 	input.mi.dy = (int32_t)info[2].As<Number>() - midY;
 	SendInput(1, &input, sizeof(input));
@@ -40,9 +41,11 @@ Value mouseMove(const CallbackInfo &info) {
 }
 
 Value mouseClick(const CallbackInfo &info) {
-	INPUT down, release;
+	INPUT down, release = {};
 	down.type = INPUT_MOUSE;
+	down.mi.time = 0;
 	release.type = INPUT_MOUSE;
+	release.mi.time = 0;
 	if (info[0].As<Boolean>()) {
 		down.mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
 		release.mi.dwFlags = MOUSEEVENTF_LEFTUP;
